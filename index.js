@@ -1,5 +1,6 @@
 const { Filter } = require('content-checker');
 const dotenv = require('dotenv');
+const { JSDOM } = require('jsdom');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -9,6 +10,10 @@ const apiKey = process.env.OPEN_MODERATOR_API_KEY;
 if (!apiKey) {
     console.error('API key not found. Please add it to the .env file.');
 }
+
+// Create a simulated browser environment
+const { window } = new JSDOM();
+const { document } = window;
 
 // Standard Text Moderation
 const filter = new Filter();
