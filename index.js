@@ -41,7 +41,12 @@ console.log(filter.clean('some bad word!')); // some bad word!
 
 // AI Text Moderation
 const aiFilter = new Filter({ openModeratorAPIKey: apiKey });
-aiFilter.isProfaneAI('your string here').then(response => {
+const config = {
+    checkManualProfanityList: true,
+    provider: "google",
+};
+aiFilter.isProfaneAI('hate u man', config).then(response => {
+    console.log(response, 'response')
     if (response.profane) {
         console.log('Profanity found. Types: ', response.type.join(', '));
     } else {
