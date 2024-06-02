@@ -43,7 +43,7 @@ console.log(filter.clean('some bad word!')); // some bad word!
 const aiFilter = new Filter({ openModeratorAPIKey: apiKey });
 const config = {
     checkManualProfanityList: true,
-    provider: "google",
+    provider: "google-perspective-api",
 };
 aiFilter.isProfaneAI('hate u man', config).then(response => {
     console.log(response, 'response')
