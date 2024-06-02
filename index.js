@@ -42,7 +42,9 @@ console.log(filter.clean('some bad word!')); // some bad word!
 // AI Text Moderation
 const aiFilter = new Filter({ openModeratorAPIKey: apiKey });
 const config = {
+    // checkManualProfanityList is optional and defaults to false; it checks for the words in lang.ts (if under 50 words) before hitting the AI model. Note that this affects performance.
     checkManualProfanityList: true,
+    // provider defaults to "google-perspective-api" (Google's Perspective API); it can also be "openai" (OpenAI Moderation API) or "google-natural-language-api" (Google's Natural Language API)
     provider: "google-perspective-api",
 };
 aiFilter.isProfaneAI('hate u man', config).then(response => {
